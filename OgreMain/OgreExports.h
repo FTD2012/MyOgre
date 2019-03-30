@@ -2,8 +2,12 @@
 #ifndef _OgreExport_H_
 #define _OgreExport_H_
 
+// for mac coding
+#define OGREMAIN_STATIC_DEFINE
+#define OGRE_DEPRECATED
+
 #ifdef OGREMAIN_STATIC_DEFINE
-#  define _Ogre_EXPORT
+#  define _OgreExport
 #  define _OgrePrivate
 
 #else
@@ -17,8 +21,8 @@
 #    endif
 #  endif
 
-#  ifndef __OgrePrivate
-#    define __OgrePrivate
+#  ifndef _OgrePrivate
+#    define _OgrePrivate
 #  endif
 #endif
 
