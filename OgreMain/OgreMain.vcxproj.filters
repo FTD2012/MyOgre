@@ -26,5 +26,49 @@
     <ClInclude Include="OgreBuildSettings.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="OgreAlignedAllocator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreBitwise.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreCommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreHeaderPrefix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreHeaderSuffix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreMemoryAllocatorConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgrePlatformInformation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgrePrerequisites.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreStableHeaders.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreStdHeaders.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreStringVector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OgreAlignedAllocator.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OgreString.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

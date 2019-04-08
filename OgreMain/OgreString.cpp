@@ -3,19 +3,21 @@
 namespace Ogre {
     const String& StringUtil::BLANK = BLANKSTRING;
 
+	//---------------------------------------------------------------------
     void StringUtil::trim(String& str, bool left, bool right)
     {
         static const String delims = " \t\r\n";
-        if (right) 
+        if (right)
             str.erase(str.find_last_not_of(delims)+1); // trim right
         if (left)
             str.erase(0, str.find_first_not_of(delims)); // trim left
     }
 
+	//---------------------------------------------------------------------
     StringVector StringUtil::split(const String& str, const String& delims, unsigned int maxSplits, bool preserveDelims)
     {
         StringVector ret;
-        ret.reserve(maxSplits ? maxSplits+1 : 10); // Pre-allocate some space for performanc
+        ret.reserve(maxSplits ? maxSplits+1 : 10); // Pre-allocate some space for performance
 
         size_t start = 0, pos;
         unsigned int numSplits = 0;
@@ -29,7 +31,7 @@ namespace Ogre {
             }
             else if (pos == String::npos || (maxSplits && numSplits == maxSplits))
             {
-                // Copy the rest fo the string
+                // Copy the rest of the string
                 ret.push_back(str.substr(start));
             }
             else

@@ -9,7 +9,7 @@
 namespace Ogre {
     typedef _StringBase String;
 
-    typedef std::vector<string> StringVector;
+    typedef std::vector<String> StringVector;
 }
 
 

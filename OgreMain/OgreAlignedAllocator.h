@@ -32,6 +32,8 @@ namespace Ogre {
     */
     class _OgreExport AlignedMemory {
 
+	public:
+
         /** Allocate memory with given alignment.
         @param size
             The size of memory need to allocate.

@@ -84,7 +84,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -147,11 +147,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="OgreAlignedAllocator.h" />
+    <ClInclude Include="OgreBitwise.h" />
     <ClInclude Include="OgreBuildSettings.h" />
+    <ClInclude Include="OgreCommon.h" />
     <ClInclude Include="OgreConfig.h" />
     <ClInclude Include="OgreExports.h" />
+    <ClInclude Include="OgreHeaderPrefix.h" />
+    <ClInclude Include="OgreHeaderSuffix.h" />
+    <ClInclude Include="OgreMemoryAllocatorConfig.h" />
     <ClInclude Include="OgrePlatform.h" />
+    <ClInclude Include="OgrePlatformInformation.h" />
+    <ClInclude Include="OgrePrerequisites.h" />
+    <ClInclude Include="OgreStableHeaders.h" />
+    <ClInclude Include="OgreStdHeaders.h" />
+    <ClInclude Include="OgreString.h" />
+    <ClInclude Include="OgreStringVector.h" />
     <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OgreAlignedAllocator.cpp" />
+    <ClCompile Include="OgreString.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

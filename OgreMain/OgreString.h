@@ -61,6 +61,8 @@ namespace Ogre {
     
     /** Utility class for mainpulation Strings. */
     class _OgreExport StringUtil {
+	public:
+
         OGRE_DEPRECATED static const String& BLANK; /// @deprecated use Ogre::BLANKSTRING instead
         OGRE_DEPRECATED typedef StringStream StrStreamType; /// @deprecated use Ogre::StringStream instead
 
@@ -73,7 +75,7 @@ namespace Ogre {
         */
         static void trim(String& str, bool left = true, bool right = true);
 
-        static StringVector split(const String& str, const String& delims = "\t\n ", unsigned int maxSplits = 0, bool preserveDelims = false);
+        static std::vector<String> split(const String& str, const String& delims = "\t\n ", unsigned int maxSplits = 0, bool preserveDelims = false);
     };
 
     /** @} */

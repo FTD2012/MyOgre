@@ -16,6 +16,7 @@
  */
 namespace Ogre {
 
+	//---------------------------------------------------------------------
     void* AlignedMemory::allocate(size_t size, size_t alignment)
     {
         assert(0 < alignment && alignment <= 128 && Bitwise::isPO2(alignment));
@@ -24,16 +25,17 @@ namespace Ogre {
         size_t offset = alignment - (sizeof(p) & (alignment-1));
 
         unsigned char* result = p + offset;
-        result[-1] = (unsigned char)offset;
 
         return result;
     }
 
+	//---------------------------------------------------------------------
     void* AlignedMemory::allocate(size_t size) 
     {
         return allocate(size, OGRE_SIMD_ALIGNMENT);
     }
 
+	//---------------------------------------------------------------------
     void AlignedMemory::deallocate(void* p) 
     {
         if (p)

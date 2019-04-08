@@ -7,7 +7,7 @@
 #if OGRE_COMPILER == OGRE_COMPILER_MSVC
 
 // restore previous warings settings
-#   pragma waring (pop)
+#   pragma warning (pop)
 
 #endif
 
