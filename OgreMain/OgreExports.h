@@ -4,7 +4,7 @@
 
 // for mac coding
 #define OGREMAIN_STATIC_DEFINE
-//#define OGRE_DEPRECATED
+#define OGRE_DEPRECATED
 
 #ifdef OGREMAIN_STATIC_DEFINE
 #  define _OgreExport

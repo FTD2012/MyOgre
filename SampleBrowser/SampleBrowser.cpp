@@ -1,10 +1,28 @@
 // SampleBrowser.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
-#include <string>
+#include <time.h>
+#include "OgrePlatform.h"
 #include <iostream>
+
+#include <string>
 #include "OgreAlignedAllocator.h"
 #include "OgreString.h"
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+#	define WIN32_LEAN_AND_MEAN
+#	include "window.h"
+#	include "OgreString.h"
+#elif OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
+#	include "SampleBrowser_iOS.h"		/// TODO: ljm >>> implemation
+#elif OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
+#	include "SampleBrowser_Android.h"	/// TODO: ljm >>> implemation
+/// TODO: ljm >>> implemation
+#endif
+
+#include "SampleBrowser.h"
+
+
 
 int main()
 {
