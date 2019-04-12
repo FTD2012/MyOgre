@@ -4,7 +4,17 @@
 #include "OgreBitesPrerequisites.h"
 #include "OgreBuildSettings.h"
 
+namespace OgreBites {
 
+    class aaaa {
+    public:
+        aaaa();
+
+    };
+
+
+    
+}
 
 
 

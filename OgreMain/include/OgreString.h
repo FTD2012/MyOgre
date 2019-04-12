@@ -75,7 +75,73 @@ namespace Ogre {
         */
         static void trim(String& str, bool left = true, bool right = true);
 
+        /** Returns a StringVector that contains all the substrings delimited
+            by characters in the passed <code>delims</code> argument.
+        @param str
+        @param delims
+            A list of the delimiter characters to split by
+        @param maxSplits
+            The maxium number of splits to perform(0 for unlimited splits). If this
+            paramters is > 0, the splitting process will stop after this many splits,
+            left to right.
+        @param preserveDelims
+            Flag to determine if delimiters should be saved as substrings.
+        */
         static std::vector<String> split(const String& str, const String& delims = "\t\n ", unsigned int maxSplits = 0, bool preserveDelims = false);
+
+        ///TODO: ljm >>> tokenise
+
+        /** Lower-cases all the characters in the string.
+         */
+        static void toLowerCase(String& str);
+
+        /** Upper-cases all the characters in the string.
+        */
+        static void toUpperCase(String& str);
+
+        /** Upper-cases the first letter of each word.
+        */
+        static void toTitleCase(String& str);
+
+        /** Returns whether the string begins with the pattern passed in.
+        @param str
+        @param pattern
+            The pattern to compare with.
+        @param lowerCase
+         */
+        static bool startWith(const String& str, const String& pattern, bool lowerCase);
+
+        /** Returns whether the string ends with the pattern passed in.
+        @param str
+        @param pattern
+            The pattern to compare with
+        @param lowerCase
+            If true, the end of the string will be lower cased before
+            comparsion, pattern should also be in lower case.
+        */
+        static bool endWith(const String& str, const String& pattern, bool lowerCase = true);
+
+        /** Method for standardising paths - use forward slashes only, end with slash.
+        */
+        static String standardisePath(const String& str);
+
+        /// TODO: ljm >>> implemation normalizeFilePath
+        
+        /** Method for spliting a fully qualified filename into the base name and path.
+        @remarks
+            Path is standardised as in standardisePath.
+        */
+        static void splitFileName(const String& qualifiedName,
+                                  String& outBasename, String& outPath);
+
+        /** Method for spliting a filename into the base name and extension
+        */
+        static void splitBaseFileName(const String& fullName,
+                                      String& outBasename, String& outExtention);
+
+        /// TODO: ljm >>> implemation match
+
+        static String replaceAll(const String& source, const String& replaceWhat, const String& replaceWithWhat);
     };
 
     /** @} */
