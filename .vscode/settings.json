@@ -72,5 +72,6 @@
     "sync.quietSync": true,
     "sync.askGistName": false,
     "sync.removeExtensions": false,
-    "sync.syncExtensions": true
+    "sync.syncExtensions": true,
+    "C_Cpp.configurationWarnings": "Disabled"
 }

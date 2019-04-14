@@ -221,7 +221,7 @@ namespace Ogre {
 /** Integer formats of fixed bit width.
 */
 typedef unsigned int uint32;
-typedef unsigned short unint16;
+typedef unsigned short uint16;
 typedef unsigned char uint8;
 typedef int int32;
 typedef short int16;
