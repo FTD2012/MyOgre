@@ -1,6 +1,5 @@
 # Configure Smaples build
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 file(GLOB HEADER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
 file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/*.cpp")
 
@@ -19,7 +18,7 @@ else ()
     add_executable(SampleBrowser ${HEADER_FILES} ${SOURCE_FILES} ${RESOURCE_FILES})
 endif ()
 
-target_link_libraries(SampleBrowser OgreMain OgreBites)
+target_link_libraries(SampleBrowser OgreMain OgreBites OgreGLSupport OgreTestLib)
 
 
 # configure SampleBrowser build

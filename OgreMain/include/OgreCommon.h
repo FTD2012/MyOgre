@@ -11,6 +11,8 @@ namespace Ogre {
     /// Constant black string, useful for returning by ret where local does not exist
     const String BLANKSTRING;
 
+    /// Name / value parameter pair (first = name, second = value)
+    typedef std::map<String, String> NameValuePairList;
 }
 
 #include "OgreHeaderSuffix.h"

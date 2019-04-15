@@ -22,7 +22,8 @@
 
 #include "SampleBrowser.h"
 
-
+#include "OgreOSXCocoaWindow.h"
+#include "testLib.h"
 
 int main()
 {
@@ -32,5 +33,10 @@ int main()
 	std::string str("   ddd   ");
 	Ogre::StringUtil::trim(str);
 	std::cout << str << std::endl;
-	std::cout << "\nHello World!\n"; 
+	std::cout << "\nHello World!\n";
+
+	Ogre::TestLib* testLib = new Ogre::TestLib();
+	testLib->log();
+	Ogre::CocoaWindow* window = new Ogre::CocoaWindow();
+	window->create("1", 600, 800, false, nullptr);
 }

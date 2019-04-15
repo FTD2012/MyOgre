@@ -73,6 +73,8 @@ include(Dependencies)
 # Provide user options to customise the build process
 ######################################################################
 
+cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_GL "Build OpenGL RenderSystem" TRUE "OPENGL_FOUND;NOT APPLE_IOS;NOT WINDOWS_STORE;NOT WINDOWS_PHONE" FALSE)
+
 cmake_dependent_option(OGRE_BUILD_COMPONENT_OVERLAY "Build Overlay component" TRUE "FREETYPE_FOUND" FALSE)
 cmake_dependent_option(OGRE_BUILD_COMPONENT_BITES "Build OgreBites component" TRUE "OGRE_BUILD_COMPONENT_OVERLAY" FALSE)
 
@@ -90,6 +92,17 @@ cmake_dependent_option(OGRE_BUILD_SAMPLES "Build Ogre demos" TRUE "OGRE_BUILD_CO
 ##################################################################
 # Now setup targets
 ##################################################################
+
+# Setup testlib
+####
+# @waring
+# Don't use this include, use target_include_directories instead in libs
+# include_directories(${CMAKE_CURRENT_SOURCE_DIR}/testLib/include)
+####
+add_subdirectory(testLib)
+
+# Setup RenderSystems
+add_subdirectory(RenderSystems)
 
 # Setup OgreMain project
 add_subdirectory(OgreMain)

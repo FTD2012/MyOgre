@@ -10,10 +10,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/Samples/DefaultSamples",
             "args": [],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "make"
         }

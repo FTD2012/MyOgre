@@ -12,7 +12,7 @@ if (OGRE_BUILD_SAMPLES)
             ${SAMPLES_HEADERS}
             ${SAMPLES_SOURCES}
     )
-    target_link_libraries(DefaultSamples OgreMain OgreBites)
+    target_link_libraries(DefaultSamples OgreMain OgreBites OgreTestLib OgreGLSupport)
 
     # if (APPLE AND NOT APPLE_IOS)
     #     # Set the INSTALL_PATH so that Samples can be installed in the application package

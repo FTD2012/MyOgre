@@ -62,7 +62,16 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+
+        // RenderSystems/GLSupport/include/OSX
+        "OgreOSXCocoaContext.h": "objective-cpp",
+        "OgreOSXCocoaView.h": "objective-cpp",
+        "OgreOSXCocoaWindow.h": "objective-cpp",
+
+        // RenderSystems/GLSupport/src/OSX
+        "OgreOSXCocoaView.mm": "objective-cpp",
+        "OgreOSXCocoaWindow.mm": "objective-cpp",
     },
     
     // "sync.gist": "2eed524aca81a2094a1bd70a54673f149eefe51f",

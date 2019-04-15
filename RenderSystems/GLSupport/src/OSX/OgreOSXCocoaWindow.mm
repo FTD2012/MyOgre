@@ -1,5 +1,10 @@
 #import "OgreOSXCocoaWindow.h"
 
+#import <AppKit/NSScreen.h>
+#import <AppKit/NSOpenGLView.h>
+#import <QuartzCore/CVDisplayLink.h>
+#import <iomanip>
+
 @implementation OgreGLWindow
 
 - (BOOL)canBecomeKeyWindow
@@ -24,9 +29,9 @@ namespace Ogre {
     CocoaWindow::CocoaWindow()
     : mWindow(nil)
     , mView(nil)
-    , mGLContext(nil)
-    , mWindowOriginPt(NSZeroRect)
-    , mContenScalingFactor(1.0)
+    // , mGLContext(nil)
+    , mWindowOriginPt(NSZeroPoint)
+    , mContentScalingFactor(1.0)
     , mStyleMask(NSResizableWindowMask|NSTitledWindowMask)
     {
 
@@ -37,13 +42,13 @@ namespace Ogre {
 
     }
 
-    CocoaWindow::create(const String& name, unsigned int widthPt, unsigned int heightPt,
-                        bool fullScreen, const NameValuePairList* miscPararms)
+    void CocoaWindow::create(const String& name, unsigned int widthPt, unsigned int heightPt,
+                        bool fullScreen, const NameValuePairList* miscParams)
     {
         NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
         NSApplicationLoad();
 
-        NSString* windowTitle = [NSString stringWithCString:name.c_strt() encoding:NSUTF8StringEncoding];
+        NSString* windowTitle = [NSString stringWithCString:name.c_str() encoding:NSUTF8StringEncoding];
         int winxPt = 0, winyPt = 0;
         int colourDepth = 32;
         int surfaceOrder = 1;
@@ -67,31 +72,31 @@ namespace Ogre {
         // Create register the context with the rendersystem and associate it with this window
         // mContext = OGRE_NEW CocoaContext(mGLContext, mGlPixelFormat);
 
-        if (mContenScalingFactor > 1.0)
+        if (mContentScalingFactor > 1.0)
             [mView setWantsBestResolutionOpenGLSurface:YES];
         
-        CGLLockContext((CGLContextObj)[mGLContext CGLContextObj]);
+        // CGLLockContext((CGLContextObj)[mGLContext CGLContextObj]);
 
         [mView setNeedsDisplay:YES];
 
-        if ([mGLContext view] != mView)
-            [mGLContext setView:mView];
-        [mGLContext makeCurrentContext];
+        // if ([mGLContext view] != mView)
+            // [mGLContext setView:mView];
+        // [mGLContext makeCurrentContext];
 
 #if OGRE_DEBUG_MODE
         // Crash on functions that have been removed from the API
-        CGLEnable((CGLContextObj)[mGLContext CGLContextObj], kCGLCECrashonRemovedFunctions);
+        // CGLEnable((CGLContextObj)[mGLContext CGLContextObj], kCGLCECrashOnRemovedFunctions);
 #endif
 
         // Enable GL multithreading
-        CGLEnable((CGLContextObj)[mGLContext CGLContextObj], kCGLCEMPEngine);
+        // CGLEnable((CGLContextObj)[mGLContext CGLContextObj], kCGLCEMPEngine);
 
-        [mGLContext update];
+        // [mGLContext update];
 
         // rs->clearFrameBuffer(FBT_COLOUR);
 
-        [mGLContext flushBuffer];
-        CGLUnlockContext((CGLContextObj)[mGLContext CGLContextObj]);
+        // [mGLContext flushBuffer];
+        // CGLUnlockContext((CGLContextObj)[mGLContext CGLContextObj]);
 
         [pool drain];
 
@@ -110,7 +115,7 @@ namespace Ogre {
         if (mIsExternal)
         {
             if (hidden)
-                [mWindow orderOut:nil]
+                [mWindow orderOut:nil];
             else
                 [mWindow makeKeyAndOrderFront:nil];
         }
@@ -118,15 +123,15 @@ namespace Ogre {
 
     float CocoaWindow::getViewPointToPixelScale()
     {
-        return mContenScalingFactor > 1.0f ? mContenScalingFactor : 1.0f;
+        return mContentScalingFactor > 1.0f ? mContentScalingFactor : 1.0f;
     }
 
-    int CocoaWindow::_getPixelFromPoint(int viwPt) const
+    int CocoaWindow::_getPixelFromPoint(int viewPt) const
     {
-        return mContenScalingFactor > 1.0 ? viewPt * mContenScalingFactor : viewPt;
+        return mContentScalingFactor > 1.0 ? viewPt * mContentScalingFactor : viewPt;
     }
 
-    void CocoaWindow:createNewWindow(unsigned int widthPt, unsigned int heightPt, String title)
+    void CocoaWindow::createNewWindow(unsigned int widthPt, unsigned int heightPt, String title)
     {
         // Get the dimensions of the display. We will use it for window size but not context resolution
         NSRect windowRect = NSZeroRect;
@@ -145,9 +150,9 @@ namespace Ogre {
         [mWindow setTitle:[NSString stringWithCString:title.c_str() encoding:NSUTF8StringEncoding]];
         mWindowTitle = title;
 
-        mView = [[OgreGLView alloc] initWithGLOSCWindow:this];
+        mView = [[OgreGLView alloc] initWithGLOSXWindow:this];
 
-        _setWindowParameters(widthPt, heightPt)
+        _setWindowParameters(widthPt, heightPt);
 
         
         
@@ -165,12 +170,12 @@ namespace Ogre {
             {
                 // Reset and disable the backing store in windowed mode
                 GLint backingStoreDimension[2] = {0, 0};
-                CGLSetParameter((CGLContextObj)[mGLContext CGLContextObj], kCGLCPSurfaceBackingSize, backingStoreDimension);
-                CGLDisable((CGLContextObj)[mGLContext CGLContextObj], kCGLCESurfaceBackingSize);
+                // CGLSetParameter((CGLContextObj)[mGLContext CGLContextObj], kCGLCPSurfaceBackingSize, backingStoreDimension);
+                // CGLDisable((CGLContextObj)[mGLContext CGLContextObj], kCGLCESurfaceBackingSize);
 
                 NSRect viewRect = NSMakeRect(mWindowOriginPt.x, mWindowOriginPt.y, widthPt, heightPt);
                 [mWindow setFrame:viewRect display:YES];
-                [mWindow setFrame:ViewRect];
+                [mView setFrame:viewRect];
                 [mWindow setStyleMask:mStyleMask];
                 [mWindow setOpaque:YES];
                 [mWindow setHidesOnDeactivate:NO];
@@ -180,10 +185,10 @@ namespace Ogre {
 
                 // Set the drawable, and current context
                 // If you do this last, there is a moment before the rendering window pop-up
-                [mGLContext makeCurrentContext];
+                // [mGLContext makeCurrentContext];
             }
 
-            [mGLContext update];
+            // [mGLContext update];
 
             // Even though OgreCocoaView doesn't accept first responder, it will get passed onto the next in the chain
             [mWindow makeFirstResponder:mView];

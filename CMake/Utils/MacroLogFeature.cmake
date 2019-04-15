@@ -12,9 +12,9 @@ macro(MACRO_LOG_FEATURE _var _package _description _url ) # _required _minvers _
         else (${_required} MATCHES "[Tt][Rr][Uu][Ee]")
             set(_LOGFILENAME ${PROJECT_BINARY_DIR}/DisabledFeatures.txt)
         endif (${_required} MATCHES "[Tt][Rr][Uu][Ee]")
-   endif (${_var})
+    endif (${_var})
 
-   set(_logtext "+ ${_package}")
+    set(_logtext "+ ${_package}")
 
     if (NOT ${_var})
         if (${_minvers} MATCHES ".*")
@@ -28,5 +28,5 @@ macro(MACRO_LOG_FEATURE _var _package _description _url ) # _required _minvers _
     endif (NOT ${_var})
     
     file(APPEND "${_LOGFILENAME}" "${_logtext}\n")
- 
+    message("${_logtext}")
 endmacro(MACRO_LOG_FEATURE)

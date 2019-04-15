@@ -3,7 +3,7 @@
 
 #include "OgrePrerequisites.h"
 
-// #include "OgrePixelFormat.h" /// TODO: ljm >>> implemation
+#include "OgrePixelFormat.h"
 #include "OgreHeaderPrefix.h"
 
 /* Define the number of priority groups for the render system's render targets. */
@@ -34,6 +34,8 @@ namespace Ogre {
     class _OgreExport RenderTarget : public RenderSysAlloc
     {
     public:
+        virtual uint32 getWidth(void) const;
+        virtual uint32 getHeight(void) const;
 
     protected:
         /// The name of this target

@@ -1,8 +1,10 @@
 #ifndef __OSXCocoaWindow_H_
 #define __OSXCocoaWindow_H_
 
-#include <AppKit/NSWindow.h>
-#include <QuartzCore/CVDisplayLink.h>
+// #include "OgreOSXCocoaContext.h"
+
+#import <AppKit/NSWindow.h>
+#import <QuartzCore/CVDisplayLink.h>
 
 #include "OgreOSXCocoaView.h"
 
@@ -18,12 +20,13 @@ namespace Ogre {
     private:
         NSWindow* mWindow;
         NSView* mView;
-        NSOpenGLContext* mGLContext;
+        // NSOpenGLContext* mGLContext;
 
         NSPoint mWindowOriginPt;
 
         bool mHidden;
         bool mIsExternal;
+        String mWindowTitle;
         float mContentScalingFactor;
         NSWindowStyleMask mStyleMask;
 
@@ -35,9 +38,9 @@ namespace Ogre {
         ~CocoaWindow();
 
         /** @copydoc see RenderWindow::getViewPointToPixedScale */
-        float getViewPointPixelScale();
+        float getViewPointToPixelScale();
         /** Overridden - see RenderWindow */
-        void create(const Strinb& name, unsigned int widthPt, unsigned int heightPt,
+        void create(const String& name, unsigned int widthPt, unsigned int heightPt,
                     bool fullScreen, const NameValuePairList* miscParams);
 
         void setHidden(bool hidden);
@@ -45,7 +48,7 @@ namespace Ogre {
         void createNewWindow(unsigned int width, unsigned int height, String title);
 
 
-    }
+    };
 
 
 

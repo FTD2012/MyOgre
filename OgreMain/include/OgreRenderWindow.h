@@ -12,8 +12,8 @@ namespace Ogre {
     *  @{
     */
 
-   class _OgreExport RenderWindow : public RenderTarget
-   {
+    class _OgreExport RenderWindow : public RenderTarget
+    {
     public:
         RenderWindow();
 
@@ -23,7 +23,7 @@ namespace Ogre {
         bool mIsPrimary;
 
        
-   };
+    };
 
 
 
