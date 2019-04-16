@@ -2,7 +2,13 @@
 
 # Add platform specific settings
 
-if (ANDROID)
+if (OGRE_BUILD_WINDOW_ALL_PLATFORM)
+    message("Building window using GLFW.")
+    file(GLOB PLATFORM_HEADERS "include/GLFW/*.h")
+    file(GLOB PLATFORM_SOURCES "src/GLFW/*.cpp" "src/GLFW/*.c")
+    set(PLATFORM_LIBS ${GLFW_glfw_LIBRARY} ${OPENGL_gl_LIBRARY})
+    set(PLATFORM_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR}/include/GLFW>)
+elseif (ANDROID)
 
 elseif (EMSCRIPTEN)
 
@@ -23,7 +29,6 @@ elseif (APPLE)
     )
     
     set(PLATFORM_LIBS ${Cocoa_LIBRARY_FWK})
-elseif (APPLE)
 
 endif ()
 
@@ -39,9 +44,11 @@ add_library(OgreGLSupport STATIC
 target_link_libraries(OgreGLSupport PUBLIC OgreMain PRIVATE ${PLATFORM_LIBS})
 target_include_directories(OgreGLSupport
     PUBLIC 
+    "$<BUILD_INTERFACE:${GLFW_INCLUDE_DIR}>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/OSX>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GLSL>"
+    "$<BUILD_INTERFACE:${PLATFORM_INCLUDES}"
     PRIVATE
     "$<BUILD_INTERFACE:${NATIVE_INCLUDES}>"
 )

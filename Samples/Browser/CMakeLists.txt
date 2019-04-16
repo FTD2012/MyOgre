@@ -18,7 +18,7 @@ else ()
     add_executable(SampleBrowser ${HEADER_FILES} ${SOURCE_FILES} ${RESOURCE_FILES})
 endif ()
 
-target_link_libraries(SampleBrowser OgreMain OgreBites OgreGLSupport OgreTestLib)
+target_link_libraries(SampleBrowser OgreMain OgreBites OgreGLSupport OgreTestLib OgreGLSupport)
 
 
 # configure SampleBrowser build

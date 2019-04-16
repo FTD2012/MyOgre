@@ -5,6 +5,10 @@
 # Core dependencies
 #######################################################################
 
+# Find GLFW
+find_package(GLFW)
+macro_log_feature(GLFW_FOUND "glfw" "All paltform window" "http://www.glfw.org" FALSE "" "")
+
 
 # Find FreeType
 find_package(Freetype)

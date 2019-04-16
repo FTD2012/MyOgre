@@ -72,6 +72,7 @@ include(Dependencies)
 ######################################################################
 # Provide user options to customise the build process
 ######################################################################
+cmake_dependent_option(OGRE_BUILD_WINDOW_ALL_PLATFORM "Build Window with GLFW" TRUE "GLFW_FOUND" FALSE)
 
 cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_GL "Build OpenGL RenderSystem" TRUE "OPENGL_FOUND;NOT APPLE_IOS;NOT WINDOWS_STORE;NOT WINDOWS_PHONE" FALSE)
 
@@ -79,7 +80,7 @@ cmake_dependent_option(OGRE_BUILD_COMPONENT_OVERLAY "Build Overlay component" TR
 cmake_dependent_option(OGRE_BUILD_COMPONENT_BITES "Build OgreBites component" TRUE "OGRE_BUILD_COMPONENT_OVERLAY" FALSE)
 
 cmake_dependent_option(OGRE_BUILD_SAMPLES "Build Ogre demos" TRUE "OGRE_BUILD_COMPONENT_OVERLAY;OGRE_BUILD_COMPONENT_BITES" FALSE)
-
+message("OGRE_BUILD_WINDOW_ALL_PLATFORM = " ${OGRE_BUILD_WINDOW_ALL_PLATFORM})
 ###################################################################
 # configure global build settings based on selected build options
 ###################################################################
@@ -100,6 +101,9 @@ cmake_dependent_option(OGRE_BUILD_SAMPLES "Build Ogre demos" TRUE "OGRE_BUILD_CO
 # include_directories(${CMAKE_CURRENT_SOURCE_DIR}/testLib/include)
 ####
 add_subdirectory(testLib)
+
+# Setup external
+add_subdirectory(external)
 
 # Setup RenderSystems
 add_subdirectory(RenderSystems)

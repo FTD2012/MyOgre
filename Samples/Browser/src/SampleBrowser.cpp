@@ -22,8 +22,9 @@
 
 #include "SampleBrowser.h"
 
-#include "OgreOSXCocoaWindow.h"
+// #include "OgreOSXCocoaWindow.h"
 #include "testLib.h"
+#include "OgreGLFWWindow.h"
 
 int main()
 {
@@ -37,6 +38,9 @@ int main()
 
 	Ogre::TestLib* testLib = new Ogre::TestLib();
 	testLib->log();
-	Ogre::CocoaWindow* window = new Ogre::CocoaWindow();
-	window->create("1", 600, 800, false, nullptr);
+
+	Ogre::GLFWWindow* window = new Ogre::GLFWWindow();
+	window->create("1", 800, 600, false, nullptr);
+	// Ogre::CocoaWindow* window = new Ogre::CocoaWindow();
+	// window->create("1", 600, 800, false, nullptr);
 }
