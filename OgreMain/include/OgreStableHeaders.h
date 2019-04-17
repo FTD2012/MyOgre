@@ -10,6 +10,8 @@
 
 #include "OgreBitwise.h"
 #include "OgreCommon.h"
+#include "OgreLog.h"
+#include "OgreLogManager.h"
 #include "OgreString.h"
 #include "OgreStringVector.h"
 

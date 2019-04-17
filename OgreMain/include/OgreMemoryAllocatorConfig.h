@@ -48,12 +48,16 @@ namespace Ogre {
     typedef AllocPolicy RenderSysAllocPolicy;
 
     // Now defines all the base classed for each allocation
+    typedef AllocatedObject<> GeneralAllocatedObject;
     typedef AllocatedObject<> RenderSysAllocatedObject;
 
     // Pef-class allocators defined here
     // NOTE: small, non-virtural classes should not subeclass an allocator
     // the virtual function table could double their size and make them less efficient
     // use primitive or STL allocators / deallocators for those
+
+    typedef GeneralAllocatedObject LogAlloc;
+
     typedef RenderSysAllocatedObject RenderSysAlloc;
 
 }
@@ -66,6 +70,10 @@ namespace Ogre {
 /** \addtogroup General
 *  @{
 */
+
+// new / delete for classes deriving from AllocatedObject (alignment determined by per-class policy)
+#   define OGRE_NEW new
+#   define OGRE_DELETE delete
 
 /** @} */
 /** @} */

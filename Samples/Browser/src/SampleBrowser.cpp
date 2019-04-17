@@ -25,6 +25,7 @@
 // #include "OgreOSXCocoaWindow.h"
 #include "testLib.h"
 #include "OgreGLFWWindow.h"
+#include "OgreLogManager.h"
 
 int main()
 {
@@ -38,9 +39,15 @@ int main()
 
 	Ogre::TestLib* testLib = new Ogre::TestLib();
 	testLib->log();
+	
+	Ogre::LogManager* logMgr = new Ogre::LogManager();
+	logMgr->createLog("firstLog.log", true);
+	logMgr->getSingletonPtr()->logMessage("11111");
 
 	Ogre::GLFWWindow* window = new Ogre::GLFWWindow();
 	window->create("1", 800, 600, false, nullptr);
+	window->create("2", 800, 600, false, nullptr);
+
 	// Ogre::CocoaWindow* window = new Ogre::CocoaWindow();
 	// window->create("1", 600, 800, false, nullptr);
 }

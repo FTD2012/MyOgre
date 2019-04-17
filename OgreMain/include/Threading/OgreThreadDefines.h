@@ -14,7 +14,8 @@
    #include "OgreThreadDefinesSTD.h"
 #endif
 
-#if OGRE_THREAD_PROVIDER == 3
+#if OGRE_THREAD_SUPPORT == 3
+    #include "OgreThreadDefinesNone.h"
 
 #else 
     // alias to WQ names

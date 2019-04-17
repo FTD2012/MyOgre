@@ -27,7 +27,7 @@
 #include <limits>
 
 // C++ Stream stuff
-#include <iostream>
+#include <fstream>
 #include <iosfwd>
 #include <sstream>
 

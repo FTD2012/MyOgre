@@ -28,7 +28,7 @@ namespace Ogre {
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-        window = glfwCreateWindow(800, 600, "好好学习OPENGL", NULL, NULL);
+        window = glfwCreateWindow(widthPt, heightPt, name.c_str(), NULL, NULL);
         if (!window) {
             std::cout << "Failed to create GLFW window" << std::endl;
             glfwTerminate();
