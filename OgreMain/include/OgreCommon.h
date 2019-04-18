@@ -13,6 +13,16 @@ namespace Ogre {
 
     /// Name / value parameter pair (first = name, second = value)
     typedef std::map<String, String> NameValuePairList;
+
+    /// Render window creation parameters.
+    struct RenderWindowDescription
+    {
+        String              name;
+        uint                width;
+        uint                height;
+        bool                useFullScreen;
+        NameValuePairList   miscParam;
+    };
 }
 
 #include "OgreHeaderSuffix.h"

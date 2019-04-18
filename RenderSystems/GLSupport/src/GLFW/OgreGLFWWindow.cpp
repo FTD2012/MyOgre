@@ -1,7 +1,6 @@
 
 #include <iostream>
 
-
 #include "OgreGLFWWindow.h"
 
 namespace Ogre {
@@ -29,7 +28,8 @@ namespace Ogre {
 #endif
 
         window = glfwCreateWindow(widthPt, heightPt, name.c_str(), NULL, NULL);
-        if (!window) {
+        if (!window)
+        {
             std::cout << "Failed to create GLFW window" << std::endl;
             glfwTerminate();
             // return -1;
@@ -37,12 +37,14 @@ namespace Ogre {
 
         glfwMakeContextCurrent(window);
 
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+        {
             std::cout << "Failed to initialize GLAD" << std::endl;
             // return -1;
         }
 
-        while(!glfwWindowShouldClose(window)) {
+        while (!glfwWindowShouldClose(window))
+        {
 
             // processInput(window);
 

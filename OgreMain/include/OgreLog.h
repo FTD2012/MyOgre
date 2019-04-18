@@ -62,6 +62,18 @@ namespace Ogre {
     */
     class _OgreExport Log : public LogAlloc
     {
+    protected:
+        std::ofstream   mLog;
+        LoggingLevel    mLogLevel;
+        bool            mDebugOut;
+        bool            mSuppressFile;
+        bool            mTimeStamp;
+        String          mLogName;
+        bool            mTermHasColours;
+
+        typedef std::vector<LogListener*> mtLogListener;
+        mtLogListener mListerens;
+
     public:
         class Stream;
 
@@ -86,18 +98,6 @@ namespace Ogre {
             Whether the message will be logged 
         */
         void logMessage(const String& message, LogMessageLevel lml = LML_NORMAL, bool maskDebug = false);
-
-    protected:
-        std::ofstream   mLog;
-        LoggingLevel    mLogLevel;
-        bool            mDebugOut;
-        bool            mSuppressFile;
-        bool            mTimeStamp;
-        String          mLogName;
-        bool            mTermHasColours;
-
-        typedef std::vector<LogListener*> mtLogListener;
-        mtLogListener mListerens;
     };
 
 

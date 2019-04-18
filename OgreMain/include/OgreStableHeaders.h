@@ -12,6 +12,7 @@
 #include "OgreCommon.h"
 #include "OgreLog.h"
 #include "OgreLogManager.h"
+#include "OgreRoot.h"
 #include "OgreString.h"
 #include "OgreStringVector.h"
 

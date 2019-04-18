@@ -14,15 +14,12 @@ namespace Ogre {
 
     class _OgreExport RenderWindow : public RenderTarget
     {
-    public:
-        RenderWindow();
-
-
     protected:
         bool mIsFullScreen;
         bool mIsPrimary;
 
-       
+    public:
+        RenderWindow();
     };
 
 

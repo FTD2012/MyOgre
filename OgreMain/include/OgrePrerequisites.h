@@ -1,22 +1,41 @@
 #ifndef __OgrePrerequisites_H_
 #define __OgrePrerequisites_H_
 
-/* Platform-specific stuff */
+// Platform-specific stuff
 #include "OgrePlatform.h"
 
 #include <string>
 #include <memory>
 
 namespace Ogre {
+#define OGRE_VERSION    ((OGRE_VERSION_MAJOR << 16) | (OGRE_VERSION_MINOR << 8) | OGRE_VERSION_PATCH)
 
-
-    /** In order to avoid finger-aches
+// define the real number values to be used
+// default to use 'float' unless precompiler option set
+#if OGRE_DOUBLE_PRECISION == 1
+    /** Software floating point type.
+    @note Not valid as a pointer to GPU buffers / parameters
     */
+    typedef double Real;
+#else
+    /** Software floating point type.
+    @note Not valid as a pointer to GPU buffers / parameters
+    */
+    typedef float Real;
+#endif
+
    typedef unsigned char uchar;
    typedef unsigned short ushort;
    typedef unsigned int uint;
    typedef unsigned long ulong;
 
+    // Pre-declare classed
+    // Allows use of pointers in header files without including individual .h
+    // so decreases dependencies between files
+    class RenderSystem;
+    class RenderWindow;
+    class Root;
+    class LogManager;
 }
 
 /**
@@ -34,8 +53,5 @@ namespace Ogre {
     typedef _StringStreamBase StringStream;
     typedef StringStream stringstream;
 }
-
-
-
 
 #endif  // #ifndef __OgrePrerequisites_H_

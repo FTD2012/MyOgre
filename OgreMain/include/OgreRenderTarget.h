@@ -33,10 +33,6 @@ namespace Ogre {
 
     class _OgreExport RenderTarget : public RenderSysAlloc
     {
-    public:
-        virtual uint32 getWidth(void) const;
-        virtual uint32 getHeight(void) const;
-
     protected:
         /// The name of this target
         String mName;
@@ -48,8 +44,9 @@ namespace Ogre {
         uint32 mColourDepth;
         uint16 mDepthBufferPoolId;
         
-
-
+    public:
+        virtual uint32 getWidth(void) const;
+        virtual uint32 getHeight(void) const;
    };
 
 

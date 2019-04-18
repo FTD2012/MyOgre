@@ -55,9 +55,7 @@ namespace Ogre {
     {
         OGRE_LOCK_AUTO_MUTEX;
         if (!mSuppressFile)
-        {
             mLog.close();
-        }
     }
 
     //-----------------------------------------------------------------------

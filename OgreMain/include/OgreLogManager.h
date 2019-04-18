@@ -15,6 +15,13 @@ namespace Ogre {
     */
     class _OgreExport LogManager : public Singleton<LogManager>, public LogAlloc
     {
+    protected:
+        typedef std::map<String, Log*> LogList;
+        /// A list of all the logs the manager can access
+        LogList mLogs;
+        /// The default log to which output is done
+        Log* mDefaultLog;
+
     public:
         LogManager();
         ~LogManager();
@@ -41,14 +48,6 @@ namespace Ogre {
 
         static LogManager& getSingleton();
         static LogManager* getSingletonPtr();
-
-    protected:
-        typedef std::map<String, Log*> LogList;
-        /// A list of all the logs the manager can access
-        LogList mLogs;
-        /// The default log to which output is done
-        Log* mDefaultLog;
-
     };
     /** @} */
     /** @} */

@@ -1,6 +1,8 @@
 #ifndef _OgreBitesExport_H
 #define _OgreBitesExport_H
 
+#define OGREBITES_STATIC_DEFINE
+
 #ifdef OGREBITES_STATIC_DEFINE
 #   define _OgreBitesExport
 #   define OGREBITES_NO_EXPORT
