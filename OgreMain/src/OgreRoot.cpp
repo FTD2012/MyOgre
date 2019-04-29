@@ -14,7 +14,7 @@ namespace Ogre {
     }
 
     //-----------------------------------------------------------------------
-    Root::Root(const String& pluginFileName = "plugins.cfg", const String& configFileName = "ogre.cfg", const String& logFileName = "Ogre.log")
+    Root::Root(const String& pluginFileName, const String& configFileName, const String& logFileName)
     {
         if (!LogManager::getSingletonPtr())
         {
@@ -30,7 +30,16 @@ namespace Ogre {
     }
 
     //-----------------------------------------------------------------------
-    RenderWindow* Root::createWindow(const String& name, uint width, uint height, bool fullScreen, const NameValuePairList* miscParams = 0)
+    bool Root::restoreConfig()
+    {
+        String renderSystem = "";
+        RenderSystem* rs = getRenderSystemByName(renderSystem);
+
+    }
+
+
+    //-----------------------------------------------------------------------
+    RenderWindow* Root::createWindow(const String& name, uint width, uint height, bool fullScreen, const NameValuePairList* miscParams)
     {
 
     }
@@ -47,6 +56,7 @@ namespace Ogre {
         if (name.empty())
             return nullptr;
 
+    
 
         
 

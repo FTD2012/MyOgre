@@ -58,6 +58,8 @@ namespace Ogre {
 
     typedef GeneralAllocatedObject      LogAlloc;
 
+    typedef GeneralAllocatedObject      PluginAlloc;
+
     typedef RenderSysAllocatedObject    RenderSysAlloc;
     typedef GeneralAllocatedObject      RootAlloc;
 
