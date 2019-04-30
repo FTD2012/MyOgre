@@ -15,6 +15,7 @@ namespace Ogre {
 
     //-----------------------------------------------------------------------
     Root::Root(const String& pluginFileName, const String& configFileName, const String& logFileName)
+    : mActiveRenderer(nullptr)
     {
         if (!LogManager::getSingletonPtr())
         {
@@ -34,6 +35,11 @@ namespace Ogre {
     {
         String renderSystem = "";
         RenderSystem* rs = getRenderSystemByName(renderSystem);
+
+        if (!rs)
+            return false;
+
+        
 
     }
 
@@ -56,11 +62,27 @@ namespace Ogre {
         if (name.empty())
             return nullptr;
 
-    
+        RenderSystemList::const_iterator pRend;
+        for (pRend = getAvailableRenderers().begin(); pRend != getAvailableRenderers().end(); ++pRend)
+        {
+            RenderSystem* rs = *pRend;
+            if (rs->getName() == name)
+                return rs;
+        }
+
+        return nullptr;
+    }
+
+    //-----------------------------------------------------------------------
+    void Root::setRenderSystem(RenderSystem* system)
+    {
+        if (mActiveRenderer && mActiveRenderer != system)
+            mActiveRenderer->shutdown();
+
+        mActiveRenderer = system;
 
         
 
-        return nullptr;
     }
 
     //-----------------------------------------------------------------------

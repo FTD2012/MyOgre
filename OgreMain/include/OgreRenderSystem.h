@@ -15,11 +15,15 @@ namespace Ogre {
 
     class _OgreExport RenderSystem : public RenderSysAlloc
     {
+    public:
         RenderSystem();
-        ~RenderSystem();
+        virtual ~RenderSystem();
 
+        virtual const String& getName() const = 0;
 
-
+        /** Shutdown the renderer and cleanup resources.
+        */
+        virtual void shutdown();
 
     };
 

@@ -51,6 +51,8 @@ namespace Ogre {
     typedef AllocatedObject<> GeneralAllocatedObject;
     typedef AllocatedObject<> RenderSysAllocatedObject;
 
+    typedef AllocatedObject<> SceneCtlAllocatedObject;
+
     // Pef-class allocators defined here
     // NOTE: small, non-virtural classes should not subeclass an allocator
     // the virtual function table could double their size and make them less efficient
@@ -62,6 +64,8 @@ namespace Ogre {
 
     typedef RenderSysAllocatedObject    RenderSysAlloc;
     typedef GeneralAllocatedObject      RootAlloc;
+
+    typedef SceneCtlAllocatedObject     SceneMgtAlloc;
 
 }
 

@@ -1,6 +1,6 @@
 
 #include <iostream>
-
+#include "glad.h"
 #include "OgreGLFWWindow.h"
 
 namespace Ogre {

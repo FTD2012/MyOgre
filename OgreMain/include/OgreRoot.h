@@ -26,6 +26,7 @@ namespace Ogre {
     */
     class _OgreExport Root : public Singleton<Root>, public RootAlloc
     {
+        friend class RenderSystem;
     protected:
         RenderSystemList mRenderers;
         RenderSystem* mActiveRenderer;
@@ -96,6 +97,24 @@ namespace Ogre {
             A pointer to the render system, <b>NULL</b> if no found.
         */
         RenderSystem* getRenderSystemByName(const String& name);
+
+        /** Sets the rendering subsystem to be used.
+        @remarks
+            This method indicates to OGRE which rendering system is to be
+            used (e.g. Direct3D, OpenGL etc).
+        @par
+            This method is also called by render systems if they are
+            initialised directly.
+        @param
+            system Pointer to the render system to use.
+        @see
+            RenderSystem
+        */
+        void setRenderSystem(RenderSystem* system);
+
+        /** Retrieve a pointer to the currently selected render system.
+        */
+        RenderSystem* getRenderSystem();
 
         static Root& getSingleton();
         static Root* getSingletonPtr();
