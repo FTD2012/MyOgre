@@ -4,16 +4,20 @@
 #include "OgreGLFWWindow.h"
 
 namespace Ogre {
+
+    //-----------------------------------------------------------------------
     GLFWWindow::GLFWWindow()
     {
 
     }
 
+    //-----------------------------------------------------------------------
     GLFWWindow::~GLFWWindow()
     {
 
     }
 
+    //-----------------------------------------------------------------------
     void GLFWWindow::create(const String& name, unsigned int widthPt, unsigned int heightPt, bool fullScreen, const NameValuePairList* miscParams)
     {
         glfwInit();
@@ -48,12 +52,12 @@ namespace Ogre {
 
             // processInput(window);
 
-            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
+            // glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            // glClear(GL_COLOR_BUFFER_BIT);
 
             glfwPollEvents();
 
-            glfwSwapBuffers(window);
+            // glfwSwapBuffers(window);
         }
 
     }

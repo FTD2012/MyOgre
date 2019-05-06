@@ -58,6 +58,8 @@ namespace Ogre {
     // the virtual function table could double their size and make them less efficient
     // use primitive or STL allocators / deallocators for those
 
+    typedef GeneralAllocatedObject      ControllerAlloc;
+
     typedef GeneralAllocatedObject      LogAlloc;
 
     typedef GeneralAllocatedObject      PluginAlloc;
@@ -66,6 +68,8 @@ namespace Ogre {
     typedef GeneralAllocatedObject      RootAlloc;
 
     typedef SceneCtlAllocatedObject     SceneMgtAlloc;
+
+    typedef GeneralAllocatedObject      TimerAlloc;
 
 }
 

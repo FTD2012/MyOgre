@@ -25,7 +25,12 @@ namespace Ogre {
         // Overridden RenderSystem functions
         // ----------------------------------
 
-        const String& getName() const;
+        const String& getName() const override;
+
+        void _initialise() override;
+
+        RenderWindow* _createRenderWindow(const String& name, unsigned int width, unsigned int height,
+                                          bool fullScreen, const NameValuePairList* miscParams = nullptr) override;
 
     };
 

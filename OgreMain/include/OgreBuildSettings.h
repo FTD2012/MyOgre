@@ -8,7 +8,7 @@
 #define OGRE_VERSION_SUFFIX ""
 #define OGRE_VERSION_NAME "Rhagorthua"
 
-/* #undef OGRE_STATIC_LI */
+#define OGRE_STATIC_LIB
 #define OGRE_DEBUG_MODE 1
 
 /**  There are three modes for resource lookup.

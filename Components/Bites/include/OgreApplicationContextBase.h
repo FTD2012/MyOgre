@@ -6,6 +6,7 @@
 #include "OgreLogManager.h"
 
 #include "OgreFrameListener.h"
+#include "OgreStaticPluginLoader.h"
 
 // forward declarations
 extern "C" struct GLFWwindow;
@@ -37,6 +38,8 @@ namespace OgreBites {
     {
     protected:
         Ogre::Root* mRoot;
+        StaticPluginLoader mStaticPluginLoader;
+
         Ogre::String mAppName;
 
         typedef std::vector<NativeWindowPair> WindowList;
@@ -64,7 +67,7 @@ namespace OgreBites {
         but you can also] restore from a config file. Note that this only happens
         when you start the context, and not when you reset it.
         */
-        virtual  void oneTimeConfig();
+        virtual bool oneTimeConfig();
 
         // Create a new render window.
         virtual NativeWindowPair createWindow(const Ogre::String& name, uint w = 800, uint = 600, Ogre::NameValuePairList miscParams = Ogre::NameValuePairList());

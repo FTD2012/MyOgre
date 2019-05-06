@@ -34,9 +34,20 @@ namespace Ogre {
         // ordered in reverse destruction sequence
         std::unique_ptr<LogManager> mLogManager;
 
+        std::unique_ptr<Timer> mTimer;
+
+        std::unique_ptr<ControllerManager> mControllerManager;
+        std::unique_ptr<SceneManagerEnumerator> mSceneManagerEnum;
+
+        RenderWindow* mAutoWindow;
+
     public:
+        typedef std::vector<Plugin*> PluginInstanceList;
 
     protected:
+        /// List of Plugin instances registered
+        PluginInstanceList mPlugins;
+
         /// Whether root is initialised
         bool mIsInitialised;
     
@@ -49,11 +60,23 @@ namespace Ogre {
 
         /** @copydoc RenderSystem::_createRenderWindow
         */
-        RenderWindow* createWindow(const String& name, uint width, uint height, bool fullScreen, const NameValuePairList* miscParams = 0);
-        RenderWindow* createWindow(const RenderWindowDescription& desc)
+        RenderWindow* createRenderWindow(const String& name, uint width, uint height, bool fullScreen, const NameValuePairList* miscParams = 0);
+        RenderWindow* createRenderWindow(const RenderWindowDescription& desc)
         {
-            return createWindow(desc.name, desc.width, desc.height, desc.useFullScreen, &desc.miscParam);
+            return createRenderWindow(desc.name, desc.width, desc.height, desc.useFullScreen, &desc.miscParam);
         }
+
+        /** Install a new plugin.
+        @remarks
+            This installs a new extension to OGRE. The plugin itself may be loaded
+            from a DLL / DSO, or it might be statically linked into your own 
+            application. Either way, something has to call this method to get
+            it registered and functioning. You should only call this method directly
+            if your plugin is not in a DLL that could otherwise be loaded with 
+            loadPlugin, since the DLL function dllStartPlugin should call this
+            method when the DLL is loaded. 
+        */
+        void installPlugin(Plugin* plugin);
 
         /** Checks for saved video/sound/etc settings
         @remarks
@@ -115,6 +138,21 @@ namespace Ogre {
         /** Retrieve a pointer to the currently selected render system.
         */
         RenderSystem* getRenderSystem();
+
+        /** Initialises the render.
+        @remarks
+            This method can only be called after a renderer has been
+            selected with Root::setRenderSystem, and it will initialise
+            the selected rendering system ready for use.
+        @param autoCreateWindow
+            If true, a rendering window will automatically be created 
+            (saving a call to Root::createRenderWindow). The window will be
+            created based on the options currently set on the render system.
+        @return
+            A pointer to the automatically created window, if requested,
+            otherwise <b>NULL</b>
+        */
+        RenderWindow* initialise(bool autoCreateWindwo, const String& windowTitle = "OGRE Render Window", const String& customCapabilitiesConfig = BLANKSTRING);
 
         static Root& getSingleton();
         static Root* getSingletonPtr();

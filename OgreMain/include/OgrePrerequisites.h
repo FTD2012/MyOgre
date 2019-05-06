@@ -32,10 +32,15 @@ namespace Ogre {
     // Pre-declare classed
     // Allows use of pointers in header files without including individual .h
     // so decreases dependencies between files
+    class ControllerManager;
+
+    class Plugin;
     class RenderSystem;
     class RenderWindow;
     class Root;
     class LogManager;
+
+    class Timer;
 }
 
 /**

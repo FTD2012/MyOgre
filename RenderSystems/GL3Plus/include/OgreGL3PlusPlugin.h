@@ -25,7 +25,7 @@ namespace Ogre {
         void shutdown();
 
         void uninstall();
-    }
+    };
 
 
 }

@@ -3,7 +3,10 @@
 ############################################################
 
 if (OGRE_STATIC)
-
+message("111111")
+  if (OGRE_BUILD_RENDERSYSTEM_GL3PLUS)
+    set(DEPENDENCIES ${DEPENDENCIES} RenderSystem_GL3Plus)
+  endif ()
 
 endif ()
 
@@ -28,7 +31,7 @@ endif ()
 # setup target
 add_library(OgreBites ${OGRE_COMP_LIBTYPE} ${HEADER_FILES} ${SOURCES})
 set_target_properties(OgreBites PROPERTIES VERSION ${OGRE_SOVERSION} SOVERSION ${OGRE_SOVERSION})
-target_link_libraries(OgreBites PUBLIC OgreMain)
+target_link_libraries(OgreBites PUBLIC OgreMain ${DEPENDENCIES})
 target_include_directories(OgreBites PUBLIC 
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   $<INSTALL_INTERFACE:include/OGRE/Bites>)

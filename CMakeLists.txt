@@ -72,6 +72,14 @@ include(Dependencies)
 ######################################################################
 # Provide user options to customise the build process
 ######################################################################
+
+if (APPLE) 
+	option(OGRE_STATIC "Static build" TRUE)
+else ()
+endif()
+
+cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_GL3PLUS "Build OpenGL 3+ RenderSystem" TRUE "OPENGL_FOUND;NOT WINDOWS_STORE;NOT WINDOWS_PHONE" FALSE)
+
 cmake_dependent_option(OGRE_BUILD_WINDOW_ALL_PLATFORM "Build Window with GLFW" TRUE "GLFW_FOUND" FALSE)
 
 cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_GL "Build OpenGL RenderSystem" TRUE "OPENGL_FOUND;NOT APPLE_IOS;NOT WINDOWS_STORE;NOT WINDOWS_PHONE" FALSE)

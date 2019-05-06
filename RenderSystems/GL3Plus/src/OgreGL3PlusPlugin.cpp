@@ -7,7 +7,7 @@ namespace Ogre {
 
     //-----------------------------------------------------------------------
     GL3PlusPlugin::GL3PlusPlugin()
-    :mRenderSystem(nullptr)
+    : mRenderSystem(nullptr)
     {
 
     }

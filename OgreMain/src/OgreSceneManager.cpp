@@ -15,6 +15,12 @@ namespace Ogre {
 
 
     //-----------------------------------------------------------------------
+    SceneManager::~SceneManager()
+    {
+
+    }
+
+    //-----------------------------------------------------------------------
     void SceneManager::_setDestinationRenderSystem(RenderSystem* sys)
     {
         mDestRenderSystem = sys;
@@ -26,4 +32,14 @@ namespace Ogre {
         }
     }
 
+    //-----------------------------------------------------------------------
+    SceneManager::ShadowRenderer::ShadowRenderer(SceneManager* owner)
+    {
+
+    }
+
+    SceneManager::ShadowRenderer::~ShadowRenderer()
+    {
+
+    }
 }

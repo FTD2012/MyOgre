@@ -7,8 +7,16 @@
 #include "OgreRenderWindow.h"
 
 namespace Ogre {
+
+    class GLNativeSupport;
+
     class _OgreGLExport GLRenderSystemCommon : public RenderSystem
     {
+    protected:
+        GLNativeSupport* mGLSupport;
+
+    public:
+        String validateConfigOptions() { return BLANKSTRING; }
 
     };
 }
